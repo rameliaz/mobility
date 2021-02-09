@@ -91,8 +91,8 @@ c(fit1[["aicc"]],fit2[["aicc"]],fit3[["aicc"]],fit4[["aicc"]])
 
 
 (fit.0 <- auto.arima(ds[,10], xreg=test[,1],
-                   stationary=TRUE))
-(1-pnorm(abs(fit.0$coef)/sqrt(diag(fit.0$var.coef))))*2
+                   stationary=TRUE)) ## Fitting the model
+(1-pnorm(abs(fit.0$coef)/sqrt(diag(fit.0$var.coef))))*2 ## Calculating p-values
 checkresiduals(fit.0)
 
 ## Dynamic Regression with Lagged Predictors [Mobility and Testing]
@@ -118,8 +118,8 @@ fit4 <- auto.arima(ds[120:150,10], xreg=lag[120:150,1:4],
 c(fit1[["aicc"]],fit2[["aicc"]],fit3[["aicc"]],fit4[["aicc"]])
 
 (fit.1 <- auto.arima(ds[,10], xreg=lag[,c(2,5)],
-                   stationary=TRUE))
-(1-pnorm(abs(fit.1$coef)/sqrt(diag(fit.1$var.coef))))*2
+                   stationary=TRUE)) ## Fitting the model
+(1-pnorm(abs(fit.1$coef)/sqrt(diag(fit.1$var.coef))))*2 ## Calculating p-values
 checkresiduals(fit.1)
 
 c(fit.0[["aicc"]],fit.1["aicc"])
